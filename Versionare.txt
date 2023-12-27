@@ -1,0 +1,40 @@
+v0.1
+--Creare rute, api
+--Creare pagina Login
+
+
+v0.2
+--Creare autentificare cu sesiune prin JwtToken
+--Adaugare ruta si api pentru a obtine datele unui utilizator.
+--Adaugare pagina de dashboard si sidebar
+--Adaugare dotenv(.env)
+
+v0.3
+--Adaugare header
+--Adaugare rute pentru obtinerea proiectelor si bugurilor
+--Adaugare functionalitate de a plasa proiectele in sidebar(ProjectContext hook)
+--Adaugare functionalitate de a apasa pe un proiect si a afisa bugurile pe dashboard
+--Adaugare toast-uri.
+
+v0.4
+--Adaugare efect hover pentru sidebar
+--Adaugare BugModal(Pagina modala pentru adaugarea unui bug, cu posibilitate de utilizare in viitor si pentru editarea unui bug)
+--Adaugare card pentru proiectul selectat cu informatii si butoane
+--Adaugare buton de adaugare bug functional pentru proiectul selectat
+v0.5
+--Rescriere cod de incarcare proiecte si afisare, mutand pe ruta.
+--Adaugare ruta project-list pentru afisarea proiectelor existente si adaugarea unor noi proiecte.
+--Schimbat design sidebar
+--Adaugate campuri noi necesare in baza de date pentru Proiecte si modificate api-urile.
+--Schimbata componenta BugModal sa contina noile campuri.
+--Schimbata componenta de Proiect sa contina noile informatii.
+--Schimbat design header
+--Adaugata componenta generala DeleteConfirmationModal ce poate fi folosita pe orice api de delete cu id.
+
+TODO:
+DE ADAUGAT FETCH PROIECTE PE SIDEBAR DUPA ADAUGAREA UNUI NOU PROIECT
+DE ADAUGAT PERMISIUNI, VERIFICARE PERMISIUNI SI STARE LOGARE PE RUTE
+DE MODIFICAT BD SI ADAUGAREA UNUI ID NORMAL IN LOC DE UUID PE PROIECTE, DE ADAUGAT UN NOU CAMP 'DESCRIERE' PENTRU BUGURI.
+DE ADAUGAT IN BD PENTRU USER PROIECTELE DIN CARE FACE PARTE UN USER(UN ARRAY JSON CU ID-URILE PROIECTELOR)
+DE ADAUGAT IN BD PERMISIUNI PENTRU USERI.
+
