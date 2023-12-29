@@ -72,7 +72,7 @@ const Sidebar = () => {
         </CDBSidebarContent>
 
         <CDBSidebarFooter style={{ textAlign: 'center' }}>
-          <div style={{ padding: '20px 5px' }}>Bug Tracker v0.5</div>
+          <div style={{ padding: '20px 5px' }}>Bug Tracker v0.6</div>
         </CDBSidebarFooter>
       </CDBSidebar>
     </div>

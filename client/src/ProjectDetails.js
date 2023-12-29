@@ -10,7 +10,7 @@ import BugModal from './BugModal';
 import Sidebar from './SidebarMenu';
 import Header from './Header';
 
-import DeleteConfirmationModal from './DeleteConfirmationModal';
+import ConfirmationModal from './ConfirmationModal';
 
 import './sidebar.css';
 
@@ -244,11 +244,12 @@ const ProjectDetails = () => {
           </Accordion.Item>
         ))}
       </Accordion>
-      <DeleteConfirmationModal
+      <ConfirmationModal
               show={showDeleteModal}
               handleClose={handleCancelDelete}
-              handleConfirmDelete={handleConfirmDelete}
-              itemName="this bug"
+              handleConfirm={handleConfirmDelete}
+              itemName="Are you sure you want to delete this bug?"
+              itemTitle="Confirm delete"
             />
       </main>
       )}

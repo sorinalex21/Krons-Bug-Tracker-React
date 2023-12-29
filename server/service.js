@@ -228,6 +228,7 @@ async function putBug(request, response) {
     }
   } catch (error) {
     response.status(500).json({ error });
+    console.log(error);
   }
 }
 
