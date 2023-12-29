@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import verifyToken from './authService';
 
+import './sidebar.css';
+
+
 const Header = () => {
   const navigate = useNavigate();
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -39,13 +42,22 @@ const Header = () => {
         justifyContent: 'space-between',  // Aliniere la dreapta
       }}>
       <h0>Header</h0>
-      <Dropdown>
-        <Dropdown.Toggle variant="light" id="dropdown-basic" className="text-dark">
+      <Dropdown className="my-custom-dropdown">
+        <Dropdown.Toggle
+          variant="light"
+          id="dropdown-basic"
+          className="text-light hover"
+          style={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+        >
           {loggedInUser ? loggedInUser.username : 'Utilizator'}
         </Dropdown.Toggle>
-
         <Dropdown.Menu className="bg-secondary">
-          <Dropdown.Item as="button" onClick={handleLogoutClick} className="text-white">
+          <Dropdown.Item
+            as="button"
+            onClick={handleLogoutClick}
+            className="text-white my-custom-dropdown"
+            style={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+          >
             Logout
           </Dropdown.Item>
         </Dropdown.Menu>
