@@ -7,18 +7,7 @@ import Dashboard from './Dashboard'; // Asigură-te că ai această importare
 import ProjectsListPage from './ProjectsListPage';
 import ProjectDetails from './ProjectDetails';
 import verifyToken from './authService';
-
-const ProtectedRoute = ({
-  isAllowed,
-  redirectPath = '/login',
-  children,
-}) => {
-  if (!isAllowed) {
-    return <Navigate to={redirectPath} replace />;
-  }
-
-  return children ? children : <Outlet />;
-};
+import BugDetails from './BugDetails';
 
 const App = () => {
   const user = verifyToken();
@@ -32,6 +21,7 @@ const App = () => {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/projects-list" element={<ProjectsListPage />} />
       <Route path="/proiect/:projectId" element={<ProjectDetails />} />
+      <Route path="/bugs/:id" element={<BugDetails/>} />
     </Routes> 
   </Router>
   );

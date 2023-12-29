@@ -30,6 +30,12 @@ v0.5
 --Schimbata componenta de Proiect sa contina noile informatii.
 --Schimbat design header
 --Adaugata componenta generala DeleteConfirmationModal ce poate fi folosita pe orice api de delete cu id.
+v0.6
+--Adaugata ruta /bugs/:id
+--Adaugata componenta BugDetails ce faciliteaza afisarea informatiilor despre un bug pe pagina separata
+--TODO: --Adaugare comentarii pentru un anumit bug ce vor fi afisate pe pagina bugului
+	--Adaugare buton de preluare bug ce va fi asociat unui TESTER
+	--Adaugat buton de editare bug pentru TESTER
 
 TODO:
 DE ADAUGAT FETCH PROIECTE PE SIDEBAR DUPA ADAUGAREA UNUI NOU PROIECT
@@ -37,4 +43,5 @@ DE ADAUGAT PERMISIUNI, VERIFICARE PERMISIUNI SI STARE LOGARE PE RUTE
 DE MODIFICAT BD SI ADAUGAREA UNUI ID NORMAL IN LOC DE UUID PE PROIECTE, DE ADAUGAT UN NOU CAMP 'DESCRIERE' PENTRU BUGURI.
 DE ADAUGAT IN BD PENTRU USER PROIECTELE DIN CARE FACE PARTE UN USER(UN ARRAY JSON CU ID-URILE PROIECTELOR)
 DE ADAUGAT IN BD PERMISIUNI PENTRU USERI.
+DE ADAUGAT SCROLL PROGRESIV PENTRU ELEMENTELE INCARCATE DIN BD(PENTRU A INCARCA CAT MAI PUTINE PE UN SINGLE LOAD LA PAGINA)
 

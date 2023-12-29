@@ -99,6 +99,10 @@ const ProjectDetails = () => {
     console.log(`Edit bug with ID ${bugId}`);
   };
 
+  const handleOpenClick = (bugId) => {
+    navigate(`/bugs/${bugId}`);
+  };
+
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [bugToDelete, setBugToDelete] = useState(null);
@@ -227,6 +231,9 @@ const ProjectDetails = () => {
                       <p>
                         <strong>Bug id:</strong> {bug.id}
                       </p>
+                      <Button variant="success" onClick={() => handleOpenClick(bug.id)}>
+                        Open
+                      </Button>{' '}
                       <Button variant="warning" onClick={() => handleEditClick(bug.id)}>
                         Edit
                       </Button>{' '}
