@@ -33,15 +33,33 @@ v0.5
 v0.6
 --Adaugata ruta /bugs/:id
 --Adaugata componenta BugDetails ce faciliteaza afisarea informatiilor despre un bug pe pagina separata
+--Adaugata functionalitatea butonului Assign to me(pe pagina unui bug)
 --TODO: --Adaugare comentarii pentru un anumit bug ce vor fi afisate pe pagina bugului
 	--Adaugare buton de preluare bug ce va fi asociat unui TESTER
 	--Adaugat buton de editare bug pentru TESTER
 
 TODO:
-DE ADAUGAT FETCH PROIECTE PE SIDEBAR DUPA ADAUGAREA UNUI NOU PROIECT
-DE ADAUGAT PERMISIUNI, VERIFICARE PERMISIUNI SI STARE LOGARE PE RUTE
-DE MODIFICAT BD SI ADAUGAREA UNUI ID NORMAL IN LOC DE UUID PE PROIECTE, DE ADAUGAT UN NOU CAMP 'DESCRIERE' PENTRU BUGURI.
-DE ADAUGAT IN BD PENTRU USER PROIECTELE DIN CARE FACE PARTE UN USER(UN ARRAY JSON CU ID-URILE PROIECTELOR)
-DE ADAUGAT IN BD PERMISIUNI PENTRU USERI.
-DE ADAUGAT SCROLL PROGRESIV PENTRU ELEMENTELE INCARCATE DIN BD(PENTRU A INCARCA CAT MAI PUTINE PE UN SINGLE LOAD LA PAGINA)
+DE ADAUGAT FETCH PROIECTE PE SIDEBAR DUPA ADAUGAREA UNUI NOU PROIECT(practic actualizarea proiectelor pe sidebar cand se creaza unul nou, fara sa trebuiasca reload la sidebar gen)
+DE ADAUGAT PERMISIUNI, VERIFICARE PERMISIUNI SI STARE LOGARE PE RUTE(cele cu tester si membru proiect si ce mai zicea in word)
+DE ADAUGAT IN BD PENTRU USER PROIECTELE DIN CARE FACE PARTE UN USER(UN ARRAY JSON CU ID-URILE PROIECTELOR){Sau alta metoda de gestiune a acestora conform cerintelor primite}
+DE ADAUGAT IN BD PERMISIUNI PENTRU USERI.(coloana exista, trebuiesc doar un sistem de adaugare si gestionare)
+DE ADAUGAT SCROLL PROGRESIV PENTRU ELEMENTELE INCARCATE DIN BD(PENTRU A INCARCA CAT MAI PUTINE PE UN SINGLE LOAD LA PAGINA)(optional)
+
+-------------------
+Funcționalități (minime)
+
+Ca student trebuie să pot sa ma conectez la aplicație cu un cont bazat pe o adresă de email.(done doar ca e pe username ci nu pe email, se schimba usor)
+
+Ca student membru în echipa unui proiect (MP) pot să înregistrez un proiect software pentru a fi monitorizat prin aplicație, specificând repository-ul proiectului și echipa de proiect.(Aici nu avem sistem de echipe dar poate inregistra oricine un proiect(momentan), se poate modela pe sistemele actuale)
+
+Ca student care nu face parte dintr-un proiect înregistrat pot să mă adaug ca tester (TST) la proiect.(nu avem acest sistem)
+
+Ca TST pot înregistra un bug în aplicație. Bug-ul conține o severitate, o prioritate de rezolvare, o descriere și un link la commit-ul la care se referă.(Avem optiunea de adaugare buguri, de preluat bug daca nu este preluat, trebuie facuta editarea acestuia si permisiunile).
+
+Ca MP pot vedea bug-urile înregistrate pentru proiectele din care fac parte.(Exista sistemul de proiecte si de incarcat buguri, aici tine tot de permisiuni de facut)
+
+Ca MP îmi pot aloca rezolvarea unui bug. Un singur MP poate să aibă alocată rezolvarea unui bug la un moment dat.(Functionalitatea de a imi aloca rezolvarea unui bug exista)
+
+Ca MP după rezolvarea unui bug pot adăuga un status al rezolvării cu un link la commit-ul prin care s-a rezolvat.(se poate face usor folosind modalul de adaugat buguri, trebuie doar editat sa ii fie atribuite informatiile si la salvare sa faca ce trebuie, e easy)
+Aplicația are și un sistem de permisiuni. Un MP poate adăuga și modifica un proiect, poate actualiza status-ul unui bug. Un TST poate adăuga un bug.(trebuie facut, tine de tot ce e mai sus(nu stiu de ce nu a fost pusa prima cerinta de sus, lol))
 
