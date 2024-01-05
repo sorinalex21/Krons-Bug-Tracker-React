@@ -20,6 +20,7 @@ const {
   verifyUser,
   getBugsByProjectId,
   getProject,
+  putMarkAsFixed,
 } = require('./service'); // Adjust the path based on your actual file structure
 
 // Routes for Bugs
@@ -28,6 +29,7 @@ router.get('/bugs', getBugs);
 router.get('/bugs/:projectId', getBugsByProjectId);
 router.post('/bugAdd', postBug);
 router.put('/bugs/:id', putBug);
+router.put('/bugs/:id/markAsFixed', putMarkAsFixed);
 router.delete('/bugs/:id', deleteBug);
 
 // Routes for Users

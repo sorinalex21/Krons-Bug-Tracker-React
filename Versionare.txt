@@ -38,6 +38,10 @@ v0.6
 	--Adaugare buton de preluare bug ce va fi asociat unui TESTER
 	--Adaugat buton de editare bug pentru TESTER
 
+v0.7
+--Adaugata functionalitate de mark as fixed pentru un bug preluat de cineva.(Api, modal MarkAsFixed si functii aferente in BugDetails)
+--Adaugata tabela ProjectMembers
+--Modificata tabela de Buguri ca sa contina si link ul catre rezolvare.
 TODO:
 DE ADAUGAT FETCH PROIECTE PE SIDEBAR DUPA ADAUGAREA UNUI NOU PROIECT(practic actualizarea proiectelor pe sidebar cand se creaza unul nou, fara sa trebuiasca reload la sidebar gen)
 DE ADAUGAT PERMISIUNI, VERIFICARE PERMISIUNI SI STARE LOGARE PE RUTE(cele cu tester si membru proiect si ce mai zicea in word)

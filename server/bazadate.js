@@ -66,6 +66,10 @@ const Bugs = sequelize.define('bugs', {
         allowNull: true
     },
     allocatedto: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    fixLink: {
         type: DataTypes.STRING,
         allowNull: true
     }
@@ -98,6 +102,23 @@ const Projects = sequelize.define('projects', {
 
 Projects.belongsTo(Users); // This adds a userID column to the Bugs table
 Bugs.belongsTo(Projects); // This adds a project
+
+const ProjectMembers = sequelize.define('projectMembers', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
+    },
+    role: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'member', // Poate fi 'member' sau 'tester'
+    },
+});
+
+Projects.belongsToMany(Users, { through: ProjectMembers });
+Users.belongsToMany(Projects, { through: ProjectMembers });
 
 async function initialize(){
     await sequelize.authenticate();

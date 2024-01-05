@@ -8,13 +8,17 @@ import toast, { Toaster } from 'react-hot-toast';
 
 import './sidebar.css';
 import ConfirmationModal from './ConfirmationModal';
+import MarkAsFixedModal from './MarkAsFixedModal';
 import verifyToken from './authService';
 
 const BugDetails = () => {
   const { id } = useParams();
   const [bugDetails, setBugDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showMarkAsFixedModal, setShowMarkAsFixedModal] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  
+
   useEffect(() => {
     const fetchBugDetails = async () => {
       try {
@@ -43,15 +47,44 @@ const BugDetails = () => {
     fetchBugDetails();
   }, [id]);
 
+
+  
   const handleEditClick = () => {
     // Implementează logica pentru editare
     console.log('Edit bug');
   };
 
 
-  const handleMarkAsFixedClick = () => {
-    // Implementează logica pentru marcarea bug-ului ca rezolvat
-    console.log('Mark as Fixed');
+  const handleMarkAsFixed = async (fixLink) => {
+    try {
+      // Faceți solicitarea API pentru a marca bug-ul ca rezolvat
+      const response = await fetch(`http://localhost:8080/api/bugs/${id}/markAsFixed`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fixLink: fixLink,
+        }),
+      });
+  
+      if (response.ok) {
+        // Actualizați starea bug-ului pentru a reflecta rezolvarea
+        setBugDetails((prevDetails) => ({
+          ...prevDetails,
+          status: 'Rezolvat',
+          fixLink: fixLink,
+        }));
+  
+        // Închideți modalul de confirmare
+        setShowMarkAsFixedModal(false);
+        toast.success('Bug-ul a fost marcat ca rezolvat cu succes!');
+      } else {
+        toast.error('Failed to mark bug as fixed');
+      }
+    } catch (error) {
+      toast.error('Error marking bug as fixed:', error.message);
+    }
   };
 
   const handleCommentClick = () => {
@@ -112,6 +145,8 @@ const BugDetails = () => {
     setShowAssignModal(false);
   };
 
+  const isBugAssignedToCurrentUser = bugDetails && bugDetails.allocatedto === currentUser.id;
+
   return (
     <div className="d-flex">
       {/* Sidebar */}
@@ -150,6 +185,8 @@ const BugDetails = () => {
               <strong>Project ID:</strong> {bugDetails.projectId}
               <br />
               <strong>Description:</strong> {bugDetails.description}
+              <br />
+              <strong>fix link:</strong> {bugDetails.fixLink}
             </Card.Text>
                 <Button variant="success" onClick={handleAssignClick}>
                   Assign to Me
@@ -157,9 +194,18 @@ const BugDetails = () => {
                 <Button variant="warning" onClick={handleEditClick}>
                   Edit
                 </Button> {' '}
-                <Button variant="secondary" onClick={handleMarkAsFixedClick}>
-                  Mark as Fixed
-                </Button> {' '}
+                {isBugAssignedToCurrentUser && (
+                  <>
+                    <Button variant="secondary" onClick={() => setShowMarkAsFixedModal(true)}>
+                      Mark as Fixed
+                    </Button> {' '}
+                    <MarkAsFixedModal
+                      show={showMarkAsFixedModal}
+                      handleClose={() => setShowMarkAsFixedModal(false)}
+                      handleMarkAsFixed={handleMarkAsFixed}
+                    />
+                  </>
+                )}
                 <Button variant="primary" onClick={handleCommentClick}>
                   Comment
                 </Button>

@@ -22,6 +22,7 @@ const BugModal = ({ show, handleClose, handleSaveBug, project, resetBugData }) =
     allocatedto: null, // Setat pe null ca valoare implicită
     userId: null, //placeholder deoarece am facut actiunea de setare userId pe partea de Dashboard.js ca sa nu mai fac inca o incarcare de verificare token.
     projectId: project.id,
+    fixLink: null,
   });
 
 

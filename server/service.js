@@ -128,7 +128,7 @@ async function getProjects(request, response) {
 // Method to create a new bug
 async function postBug(request, response) {
   try {
-    const { name, status, priority, creationdate, description, commitLink, allocatedto, userId, projectId } = request.body;
+    const { name, status, priority, creationdate, description, commitLink, allocatedto, fixLink, userId, projectId } = request.body;
     console.log('received bug data:', request.body);
     
     if (name && status && priority && creationdate && userId && projectId) {
@@ -140,8 +140,10 @@ async function postBug(request, response) {
         description, // adăugat noul câmp
         commitLink, // adăugat noul câmp
         allocatedto, // adăugat noul câmp
+        fixLink,
         userId,
         projectId,
+        
       });
       
       response.status(201)
@@ -205,7 +207,7 @@ async function postProject(request, response) {
 async function putBug(request, response) {
   try {
     const bugId = request.params.id;
-    const { name, status, priority, creationdate, description, commitLink, allocatedto, userId, projectId } = request.body;
+    const { name, status, priority, creationdate, description, commitLink, allocatedto, fixLink, userId, projectId } = request.body;
     
     const bug = await Bugs.findByPk(bugId);
     
@@ -217,6 +219,7 @@ async function putBug(request, response) {
       bug.description = description; // adăugat noul câmp
       bug.commitLink = commitLink; // adăugat noul câmp
       bug.allocatedto = allocatedto; // adăugat noul câmp
+      bug.fixLink = fixLink; // adăugat noul câmp
       bug.userId = userId;
       bug.projectId = projectId;
       
@@ -229,6 +232,28 @@ async function putBug(request, response) {
   } catch (error) {
     response.status(500).json({ error });
     console.log(error);
+  }
+}
+
+async function putMarkAsFixed(request, response) {
+  try {
+    const bugId = request.params.id;
+    const { fixLink } = request.body;
+
+    const bug = await Bugs.findByPk(bugId);
+
+    if (bug) {
+      bug.status = 'Rezolvat';
+      bug.fixLink = fixLink;
+
+      await bug.save();
+
+      response.status(200).json(bug);
+    } else {
+      response.status(404).json({ error: 'Bug not found' });
+    }
+  } catch (error) {
+    response.status(500).json({ error });
   }
 }
 
@@ -438,4 +463,5 @@ module.exports = {
   authenticateUser,
   verifyUser,
   getProject,
+  putMarkAsFixed,
 };
